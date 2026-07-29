@@ -300,13 +300,9 @@ export const LETTER = {
   Just...
   
   the truth.`,
-  
-    `...
-  
-  So...
-  
-  Would you like to be my girlfriend?`,
-  
+  ],
+  /** Paragraphs shown after the proposal question. */
+  paragraphsAfter: [
     `If you don't feel the same...
   
   please don't feel guilty.
@@ -361,9 +357,9 @@ export const LETTER = {
   
   They mattered to me.`,
   ],
-  closing: 'wuhooooooooooo',
+  closing: '',
   question: 'Would you like to be my girlfriend?',
-  signature: 'With Care,',
+  signature: '',
   signatureName: 'Priyansh',
   /** The affirmative answer button. */
   yes: 'Yes',
