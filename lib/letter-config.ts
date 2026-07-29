@@ -40,7 +40,7 @@ export const SPRING = {
 } as const
 
 export const LETTER = {
-  greeting: 'Hi, Aapti',
+  greeting: 'Hi Aapti,',
   title: 'The Last Dance',
   paragraphs: [
     `I don't really know how to begin this.
@@ -69,7 +69,7 @@ export const LETTER = {
   
     `There was a time when I thought if I could just find the perfect words, maybe everything would make sense.
   
-  Turns out...
+  Turns out, 
   
   there aren't any.
   
@@ -85,13 +85,13 @@ export const LETTER = {
   
   Then I spent a long time being annoyed at myself because I couldn't.
   
-  Then eventually...
+  Then eventually, 
   
   I just accepted it.
   
   Not in a sad way.
   
-  Just...
+  Just, 
   
   this is how I feel.
   
@@ -101,7 +101,7 @@ export const LETTER = {
   
   I thought that's how it worked.
   
-  You wait long enough, stay busy enough, tell yourself enough times that it's over...
+  You wait long enough, stay busy enough, tell yourself enough times that it's over, 
   
   and eventually your heart gets the message.
   
@@ -111,7 +111,7 @@ export const LETTER = {
   
   Not weaker.
   
-  Just...
+  Just, 
   
   less desperate to be noticed.`,
   
@@ -141,13 +141,13 @@ export const LETTER = {
   
   I get distracted.
   
-  And then, out of nowhere...
+  And then, out of nowhere, 
   
   something reminds me of you.`,
   
     `Not in some dramatic movie kind of way.
   
-  Just...
+  Just, 
   
   "Oh, she'd probably laugh at this."
   
@@ -173,9 +173,9 @@ export const LETTER = {
   
   Because I wanted to make sure I wasn't confusing hope with truth.
   
-  The strange thing is...
+  The strange thing is, 
   
-  after all that questioning...
+  after all that questioning, 
   
   the answer never changed.`,
   
@@ -209,13 +209,13 @@ export const LETTER = {
   
   They were never your responsibility.
   
-  They just...
+  They just, 
   
   became my reality.
   
   The embarrassing part isn't that I still like you.
   
-  The embarrassing part is how many times I celebrated finally moving on...
+  The embarrassing part is how many times I celebrated finally moving on, 
   
   only to realize I was celebrating too early.
   
@@ -225,7 +225,7 @@ export const LETTER = {
   
   they quietly found their way back.`,
   
-    `I used to think that if this story didn't end the way I wanted...
+    `I used to think that if this story didn't end the way I wanted, 
   
   then maybe it wasn't worth telling.
   
@@ -249,7 +249,7 @@ export const LETTER = {
   
   Me.`,
   
-    `So if you're reading this...
+    `So if you're reading this, 
   
   I'm not asking you to carry the weight of four years.
   
@@ -265,7 +265,7 @@ export const LETTER = {
   
   They taught me hope.
   
-  And eventually...
+  And eventually, 
   
   they taught me that loving someone also means respecting the possibility that they might not choose you.
   
@@ -289,7 +289,7 @@ export const LETTER = {
   
   Maybe you're still thinking.
   
-  Whatever it is...
+  Whatever it is, 
   
   I want your answer to be the one that's true.
   
@@ -297,13 +297,13 @@ export const LETTER = {
   
   Not the one you think I want to hear.
   
-  Just...
+  Just, 
   
   the truth.`,
   ],
   /** Paragraphs shown after the proposal question. */
   paragraphsAfter: [
-    `If you don't feel the same...
+    `If you don't feel the same, 
   
   please don't feel guilty.
   
@@ -331,7 +331,7 @@ export const LETTER = {
   
   Maybe this becomes the last page of a story I've been reading alone for years.
   
-  If it does...
+  If it does, 
   
   that's okay.
   
