@@ -40,7 +40,7 @@ export const SPRING = {
 } as const
 
 export const LETTER = {
-  greeting: 'Hey Aapti,',
+  greeting: 'Hi, Aapti',
   title: 'The Last Dance',
   paragraphs: [
     'baad',
@@ -48,8 +48,8 @@ export const LETTER = {
     'daalenge',
   ],
   closing: 'wuhooooooooooo',
-  question: 'Will you be my girlfriend?',
-  signature: 'Always yours,',
+  question: 'Would you like to be my girlfriend?',
+  signature: 'With Care,',
   signatureName: 'Priyansh',
   /** The affirmative answer button. */
   yes: 'Yes',
