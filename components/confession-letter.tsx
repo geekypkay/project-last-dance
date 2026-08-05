@@ -5,8 +5,8 @@ import { useRef } from 'react'
 import { LETTER } from '@/lib/letter-config'
 
 interface ConfessionLetterProps {
-  /** When true, the full typeset letter fades in. */
-  revealed: boolean
+  /** When true, the letter container fades in (not used for paragraph animations). */
+  revealed?: boolean
 }
 
 const line = {
@@ -21,14 +21,32 @@ const line = {
 /** Wrapper component for viewport-based paragraph reveals */
 function RevealParagraph({ children, className }: { children: string; className: string }) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-50px' })
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
     <motion.p
       ref={ref}
-      variants={line}
-      initial="hidden"
-      animate={isInView ? 'show' : 'hidden'}
+      initial={{ opacity: 0, y: 16 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+      transition={{ duration: 1.2, ease: [0.22, 0.61, 0.36, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.p>
+  )
+}
+
+/** Enhanced climactic animation for the main question */
+function RevealQuestion({ children, className }: { children: string; className: string }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+  return (
+    <motion.p
+      ref={ref}
+      initial={{ opacity: 0, y: 24, scale: 0.98 }}
+      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 24, scale: 0.98 }}
+      transition={{ duration: 1.8, ease: [0.22, 0.61, 0.36, 1] }}
       className={className}
     >
       {children}
@@ -213,13 +231,13 @@ export function ConfessionLetter({ revealed }: ConfessionLetterProps) {
           ))}
         </div>
 
-        <div className="mt-32 pt-16">
-          <RevealParagraph className="text-balance text-center font-script text-5xl leading-tight text-seal sm:text-6xl">
+        <div className="mt-40 pt-24">
+          <RevealQuestion className="text-balance text-center font-script text-5xl leading-tight text-seal sm:text-6xl">
             {LETTER.question}
-          </RevealParagraph>
+          </RevealQuestion>
         </div>
 
-        <div className="mt-32 pt-16 flex flex-col gap-7">
+        <div className="mt-40 pt-24 flex flex-col gap-7">
           {LETTER.paragraphsAfter.map((p, i) => (
             <RevealParagraph
               key={i}

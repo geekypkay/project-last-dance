@@ -1,7 +1,7 @@
 'use client'
 
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { PROMPTS, STAGES, type Stage } from '@/lib/letter-config'
 import { Envelope } from './envelope'
 import { ConfessionLetter } from './confession-letter'
@@ -11,8 +11,10 @@ import { PetalRain } from './petal-rain'
 export function EnvelopeExperience() {
   const [stage, setStage] = useState<Stage>(STAGES.SEALED)
   const [ready] = useState(true)
+  const [scrolled, setScrolled] = useState(false)
   const reduce = useReducedMotion()
   const busyRef = useRef(false)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   const reading = stage >= STAGES.READING
   const interactive = ready && stage < STAGES.EXPANDED && !busyRef.current
@@ -51,6 +53,23 @@ export function EnvelopeExperience() {
   const reset = useCallback(() => {
     busyRef.current = false
     setStage(STAGES.SEALED)
+    setScrolled(false)
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (scrollContainerRef.current) {
+        const scrollPos = scrollContainerRef.current.scrollTop
+        // Button only visible when scrolled less than 200px (top greeting area)
+        setScrolled(scrollPos > 200)
+      }
+    }
+
+    const container = scrollContainerRef.current
+    if (container) {
+      container.addEventListener('scroll', handleScroll)
+      return () => container.removeEventListener('scroll', handleScroll)
+    }
   }, [])
 
   const onKeyDown = (e: React.KeyboardEvent) => {
@@ -152,6 +171,7 @@ export function EnvelopeExperience() {
 
       {/* Full letter overlay — becomes the focus once expanded */}
       <div
+        ref={scrollContainerRef}
         className="absolute inset-0 flex items-start justify-center overflow-y-auto px-6 py-16 sm:py-24"
         style={{
           pointerEvents: reading ? 'auto' : 'none',
@@ -165,7 +185,7 @@ export function EnvelopeExperience() {
 
       {/* Go back — seals the letter and returns to the start */}
       <AnimatePresence>
-        {reading ? (
+        {reading && !scrolled ? (
           <motion.button
             key="back"
             type="button"

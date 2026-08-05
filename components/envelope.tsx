@@ -241,22 +241,7 @@ export function Envelope({ stage }: EnvelopeProps) {
             aria-hidden="true"
           />
 
-          {/* Handwritten "For Aapti" on the front of the flap */}
-          <div
-            className="absolute font-script"
-            style={{
-              top: '35%',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              fontSize: '16px',
-              color: 'rgba(58, 49, 43, 0.5)',
-              fontStyle: 'italic',
-              letterSpacing: '0.08em',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            
-          </div>
+
           {/* Flap edge shading + center crease */}
           <svg
             className="absolute inset-0"
