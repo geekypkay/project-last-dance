@@ -255,7 +255,7 @@ export function Envelope({ stage }: EnvelopeProps) {
               whiteSpace: 'nowrap',
             }}
           >
-            For Aapti
+            
           </div>
           {/* Flap edge shading + center crease */}
           <svg
