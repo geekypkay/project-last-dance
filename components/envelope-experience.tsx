@@ -8,27 +8,10 @@ import { ConfessionLetter } from './confession-letter'
 import { DustParticles } from './dust-particles'
 import { PetalRain } from './petal-rain'
 
-/** Soft, resonant "seal break" tone synthesised in-browser (no asset needed). */
-function playSealSound(ctx: AudioContext) {
-  const now = ctx.currentTime
-  const osc = ctx.createOscillator()
-  const gain = ctx.createGain()
-  osc.type = 'sine'
-  osc.frequency.setValueAtTime(220, now)
-  osc.frequency.exponentialRampToValueAtTime(90, now + 0.35)
-  gain.gain.setValueAtTime(0.0001, now)
-  gain.gain.exponentialRampToValueAtTime(0.12, now + 0.02)
-  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.6)
-  osc.connect(gain).connect(ctx.destination)
-  osc.start(now)
-  osc.stop(now + 0.6)
-}
-
 export function EnvelopeExperience() {
   const [stage, setStage] = useState<Stage>(STAGES.SEALED)
   const [ready] = useState(true)
   const reduce = useReducedMotion()
-  const audioRef = useRef<AudioContext | null>(null)
   const busyRef = useRef(false)
 
   const reading = stage >= STAGES.READING
@@ -41,16 +24,6 @@ export function EnvelopeExperience() {
       switch (current) {
         case STAGES.SEALED: {
           // Break the seal, then let the flap open on its own.
-          try {
-            audioRef.current ??= new (window.AudioContext ||
-              (window as unknown as { webkitAudioContext: typeof AudioContext })
-                .webkitAudioContext)()
-            const ctx = audioRef.current
-            // fire the crack tone as the fractures begin to spread
-            if (ctx) window.setTimeout(() => playSealSound(ctx), 1100)
-          } catch {
-            /* audio is a graceful enhancement */
-          }
           busyRef.current = true
           window.setTimeout(() => {
             busyRef.current = false
@@ -123,7 +96,7 @@ export function EnvelopeExperience() {
       <DustParticles count={reduce ? 0 : 48} />
 
       {/* Slow rose-petal rain while the letter is being read */}
-      <PetalRain active={reading && !reduce} count={44} />
+      <PetalRain active={reading && !reduce} count={16} />
 
       {/* Envelope stage */}
       <div className="relative flex min-h-[100dvh] flex-col items-center justify-center gap-14 px-6 py-16">

@@ -1,18 +1,12 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 import { LETTER } from '@/lib/letter-config'
 
 interface ConfessionLetterProps {
   /** When true, the full typeset letter fades in. */
   revealed: boolean
-}
-
-const container = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.4, delayChildren: 0.5 },
-  },
 }
 
 const line = {
@@ -22,6 +16,24 @@ const line = {
     y: 0,
     transition: { duration: 1.2, ease: [0.22, 0.61, 0.36, 1] as const },
   },
+}
+
+/** Wrapper component for viewport-based paragraph reveals */
+function RevealParagraph({ children, className }: { children: string; className: string }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-50px' })
+
+  return (
+    <motion.p
+      ref={ref}
+      variants={line}
+      initial="hidden"
+      animate={isInView ? 'show' : 'hidden'}
+      className={className}
+    >
+      {children}
+    </motion.p>
+  )
 }
 
 /* Natural hand-deckled handmade-paper silhouette shared by the sheet and the
@@ -80,9 +92,6 @@ export function ConfessionLetter({ revealed }: ConfessionLetterProps) {
 
       {/* The physical, aged letter sheet */}
       <motion.article
-        variants={container}
-        initial="hidden"
-        animate={revealed ? 'show' : 'hidden'}
         className="paper-noise aged-paper relative mx-auto flex flex-col px-9 py-16 text-ink sm:px-16 sm:py-20"
         style={{
           clipPath: EDGE,
@@ -189,69 +198,56 @@ export function ConfessionLetter({ revealed }: ConfessionLetterProps) {
           }}
         />
 
-        <motion.p
-          variants={line}
-          className="font-script text-4xl leading-none text-seal/90 sm:text-5xl"
-        >
+        <RevealParagraph className="font-script text-4xl leading-none text-seal/90 sm:text-5xl">
           {LETTER.greeting}
-        </motion.p>
+        </RevealParagraph>
 
         <div className="mt-9 flex flex-col gap-7">
           {LETTER.paragraphs.map((p, i) => (
-            <motion.p
+            <RevealParagraph
               key={i}
-              variants={line}
               className="text-pretty font-serif text-lg leading-loose text-ink/85 sm:text-xl"
             >
               {p}
-            </motion.p>
+            </RevealParagraph>
           ))}
         </div>
 
-        <motion.h2
-          variants={line}
-          className="mt-12 text-balance text-center font-script text-5xl leading-tight text-seal sm:text-6xl"
-        >
-          {LETTER.question}
-        </motion.h2>
+        <div className="mt-32 pt-16">
+          <RevealParagraph className="text-balance text-center font-script text-5xl leading-tight text-seal sm:text-6xl">
+            {LETTER.question}
+          </RevealParagraph>
+        </div>
 
-        <div className="mt-12 flex flex-col gap-7">
+        <div className="mt-32 pt-16 flex flex-col gap-7">
           {LETTER.paragraphsAfter.map((p, i) => (
-            <motion.p
+            <RevealParagraph
               key={i}
-              variants={line}
               className="text-pretty font-serif text-lg leading-loose text-ink/85 sm:text-xl"
             >
               {p}
-            </motion.p>
+            </RevealParagraph>
           ))}
         </div>
 
         {LETTER.closing ? (
-          <motion.p
-            variants={line}
-            className="mt-10 text-pretty font-serif text-lg italic leading-loose text-ink/80 sm:text-xl"
-          >
-            {LETTER.closing}
-          </motion.p>
+          <div className="mt-10">
+            <RevealParagraph className="text-pretty font-serif text-lg italic leading-loose text-ink/80 sm:text-xl">
+              {LETTER.closing}
+            </RevealParagraph>
+          </div>
         ) : null}
 
-        <div className="mt-14 flex flex-col items-end self-stretch">
+        <div className="mt-14 flex flex-col items-end self-stretch pb-32">
           {LETTER.signature ? (
-            <motion.p
-              variants={line}
-              className="font-serif text-lg italic leading-none text-ink/70"
-            >
+            <RevealParagraph className="font-serif text-lg italic leading-none text-ink/70">
               {LETTER.signature}
-            </motion.p>
+            </RevealParagraph>
           ) : null}
 
-          <motion.p
-            variants={line}
-            className="font-script text-4xl leading-none text-seal sm:text-5xl"
-          >
+          <RevealParagraph className="font-script text-4xl leading-none text-seal sm:text-5xl">
             {LETTER.signatureName}
-          </motion.p>
+          </RevealParagraph>
         </div>
       </motion.article>
     </motion.div>
