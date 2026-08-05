@@ -279,7 +279,15 @@ export const LETTER = {
   
   I'm writing this because these feelings belong to me.
   
-  Your answer belongs to you.`,
+  Your answer belongs to you.`, `After you read this, there won't really be another version of the story hidden inside me.
+
+  No paragraph I wish I'd sent.
+  
+  No important thing I was too scared to admit.
+  
+  You'll finally know the things I spent years keeping to myself.
+  
+  And whatever happens after that, at least I'll know that when I finally spoke to you honestly, I didn't hide.`,
   
     `I don't know what you're about to say.
   
