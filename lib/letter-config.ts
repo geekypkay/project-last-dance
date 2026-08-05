@@ -354,9 +354,7 @@ export const LETTER = {
   
     `I think that's actually why I'm here.
   
-  Not because I need a yes.
-  
-  Because I don't want to spend years wondering what would've happened if I'd never asked properly.
+  I don't want to spend years wondering what would've happened if I'd never asked properly.
   
   I don't want "what if" to be the last chapter.`,
   
