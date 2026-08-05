@@ -288,6 +288,31 @@ export const LETTER = {
   You'll finally know the things I spent years keeping to myself.
   
   And whatever happens after that, at least I'll know that when I finally spoke to you honestly, I didn't hide.`,
+
+
+
+  `I'm scared of what you'll think of me after reading all this.
+
+  Maybe some of it will seem stupid.
+  
+  Maybe you'll think I cared too much.
+  
+  That's something I've thought about more times than I'd like to admit.
+  
+  But I realized that if I kept removing everything I was embarrassed for you to know, I'd just end up hiding from you again.`,
+
+
+
+
+  `I also don't want to pretend I've reached some perfect place where your answer doesn't matter to me.
+
+  It does.
+  
+  Of course I want you to say yes.
+  
+  I'd be lying if I told you some part of me isn't hoping for that even while you're reading this.
+  
+  I think I've just finally understood that hoping for a yes and being able to accept a no can exist at the same time.`,
   
     `I don't know what you're about to say.
   
