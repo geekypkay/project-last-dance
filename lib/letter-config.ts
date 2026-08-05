@@ -299,7 +299,9 @@ export const LETTER = {
   
   Just, 
   
-  the truth.`,
+  the truth. I think I've said everything I was afraid to say.
+
+  So there's only one thing left to ask.`,
   ],
   /** Paragraphs shown after the proposal question. */
   paragraphsAfter: [
@@ -358,7 +360,7 @@ export const LETTER = {
   They mattered to me.`,
   ],
   closing: '',
-  question: 'Would you like to be my girlfriend?',
+  question: 'Would you want to be with me?',
   signature: '',
   signatureName: 'Priyansh',
   /** The affirmative answer button. */
